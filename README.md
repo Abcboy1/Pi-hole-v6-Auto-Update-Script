@@ -47,8 +47,8 @@ Da das Skript Root-Rechte für den Befehl pihole -up benötigt, muss der Cronjob
 Root-Crontab öffnen:
 sudo crontab -e
 Den folgenden Eintrag am Ende der Datei hinzufügen (Beispiel: Ausführung täglich um 05:00 Uhr morgens):
-0 5 * * * /home/DEIN-BENUTZERNAME/pihole-update.sh
-(Ersetze DEIN-BENUTZERNAME durch deinen tatsächlichen Linux-Benutzernamen).
+0 5 * * * /home/pihole-update.sh
+
 Speichern und schließen.
 Kurzanleitung: E-Mail-Versand mit msmtp & mailutils
 Damit das Skript nach dem Update Statusberichte per E-Mail versenden kann, muss ein SMTP-Relay eingerichtet werden. msmtp ist dafür eine leichte und zuverlässige Lösung.
