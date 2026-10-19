@@ -25,7 +25,7 @@ Schnellstart & Installation
 1. Repository klonen oder Skript herunterladen
 Lade das Skript in dein Home-Verzeichnis herunter:
 cd ~
-git clone https://github.com/DEIN-BENUTZERNAME/DEIN-REPOSITORY-NAME.git pihole-update
+git clone pihole-update.sh
 cd pihole-update
 (Alternativ erstelle die Datei manuell mit nano pihole-update.sh und füge den Skript-Inhalt ein).
 2. Skript anpassen
