@@ -25,8 +25,9 @@ Installation & Einrichtung
 1. Skript erstellen
 Speichere das Skript in einem Systemadministrationsverzeichnis, z. B. unter /usr/local/bin/pihole_update.sh:
 
-Bash
+ Bash
 sudo nano /usr/local/bin/pihole_update.sh
+
 Füge den Code (siehe Skript-Code unten) ein.
 
 2. Ausführbarkeit sicherstellen
