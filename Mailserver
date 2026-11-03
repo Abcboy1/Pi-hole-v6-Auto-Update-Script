@@ -1,0 +1,30 @@
+# ✉️ msmtp Mail-Relay Einrichtung
+
+Eine kompakte und professionelle Anleitung zur Einrichtung von **`msmtp`** als leichtgewichtiger SMTP-Client auf einem Linux-System (z. B. Raspberry Pi OS). Dies ermöglicht es Skripten und Systemdiensten, E-Mails zuverlässig über externe E-Mail-Anbieter (wie Outlook, Gmail oder GMX) zu versenden, ohne dass ein schwerer lokaler Mailserver betrieben werden muss.
+
+---
+
+## ✨ Funktionen
+
+- **Schlank & Effizient:** Ersetzt komplexe Mailserver (wie Postfix oder Exim) durch einen minimalistischen SMTP-Client.
+- **Sicherer Relay-Versand:** Leitet System-E-Mails direkt über verschlüsselte Verbindungen (TLS) an deinen persönlichen E-Mail-Provider weiter.
+- **Nahtlose Integration:** Verknüpft sich automatisch mit dem Standard-Linux-Befehl `mail` / `mailutils`.
+
+---
+
+## 📋 Voraussetzungen
+
+1. Ein Linux-System (z. B. Raspberry Pi OS).
+2. **Root-Rechte** (`sudo`).
+3. Ein bestehendes E-Mail-Konto inklusive der SMTP-Zugangsdaten (ggf. ein generiertes **App-Passwort**, falls der Anbieter 2FA verwendet).
+
+---
+
+## 🚀 Installation & Einrichtung
+
+### 1. msmtp und mailutils installieren
+Installiere den SMTP-Client sowie das Paket für den `mail`-Befehl:
+
+```bash
+sudo apt update
+sudo apt install msmtp msmtp-mta mailutils -y
