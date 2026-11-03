@@ -28,3 +28,48 @@ Installiere den SMTP-Client sowie das Paket für den `mail`-Befehl:
 ```bash
 sudo apt update
 sudo apt install msmtp msmtp-mta mailutils -y
+
+
+Erstelle und öffne die globale Konfigurationsdatei für msmtp:
+
+Bash
+sudo nano /etc/msmtprc
+Füge den folgenden Inhalt ein und passe die Platzhalter an deinen E-Mail-Anbieter an:
+
+Plaintext
+# Standardeinstellungen für alle Konten
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        /var/log/msmtp.log
+
+# Haupt-Account (SMTP-Zugang)
+account        default
+host           smtp.office365.com     # Beispiel für Outlook/Hotmail (oder smtp.gmail.com / mail.gmx.net)
+port           587
+from           deine-email@example.com
+user           deine-email@example.com
+password       DEIN_PASSWORT_ODER_APP_PASSWORT
+ℹ️ Hinweis: Bei Anbietern wie Google, Microsoft oder GMX ist für externe Apps meist ein separates App-Passwort (anstelle des normalen Account-Passworts) erforderlich.
+
+3. Dateiberechtigungen absichern
+Da die Konfigurationsdatei dein Klartext-Passwort enthält, müssen die Zugriffsrechte streng eingeschränkt werden (andernfalls verweigert msmtp den Dienst):
+
+Bash
+sudo chmod 600 /etc/msmtprc
+sudo chown root:root /etc/msmtprc
+4. Standard-Mailer verknüpfen
+Stelle sicher, dass der mail-Befehl des Systems an msmtp übergeben wird:
+
+Bash
+sudo update-alternatives --set mta /usr/bin/msmtp
+🧪 Testen des Mailversands
+Teste, ob der Versand über dein eingerichtetes Postfach erfolgreich funktioniert:
+
+Bash
+echo "Das ist ein Test vom Raspberry Pi" | mail -s "Test-Mail" deine-ziel-adresse@example.com
+Falls die E-Mail nicht ankommt, wirf einen Blick in das Log-Protokoll von msmtp:
+
+Bash
+sudo cat /var/log/msmtp.log
